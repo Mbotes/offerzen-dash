@@ -32,8 +32,6 @@ npm install
 npm run dev
 ```
 
-## Thoughts and Findings
-
 ## Thoughts
 
 I created this app using a Vite starter template and tried to stay away from using any plugins and libraries and instead challenged myself to recreate components and functionality from scratch
