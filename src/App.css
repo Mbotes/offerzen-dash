@@ -115,10 +115,17 @@ td {
   font-weight: bold;
   font-size: 12px;
 }
+.unarchived > td {
+  background-color: #f9fafb;
+}
 
 .archived {
   font-weight: 400;
   font-size: 12px;
+}
+
+.archived > td {
+  background-color:#eef3f6;
 }
 
 @keyframes App-logo-spin {
