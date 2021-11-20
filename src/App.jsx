@@ -81,7 +81,7 @@ function App() {
       });
     } else {
       return filteredCandidates.map((interview, index) => {
-        if(interview.archived === true){
+        if (interview.archived === true) {
           return (
             <tr key={index.toString()}>
               <td>
@@ -145,8 +145,7 @@ function App() {
               <th>Candidate</th>
               <th>Role</th>
               <th>
-                Last Communication{" "}
-                <a onClick={handleCommunicationSortAsc}>↑</a>
+                Last Communication <a onClick={handleCommunicationSortAsc}>↑</a>
                 <a onClick={handleCommunicationSortDesc}>↓</a>
               </th>
               <th>Salary</th>
