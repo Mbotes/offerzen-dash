@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "./static/logo.svg";
+import logo from "./static/download.svg";
 import jsonData from "../interviewRequests.json";
 import "./App.css";
 
@@ -62,18 +62,21 @@ function App() {
     if (showArchived) {
       return filteredCandidates.map((interview, index) => {
         return (
-          <tr key={index.toString()}>
-            <td>
+          <tr
+            key={index.toString()}
+            className={interview.archived ? "archived" : "unarchived"}
+          >
+            <td className="img-box">
               <img src={interview.image} height={28} width={28} />
-              {interview.candidate}
+              <span>{interview.candidate}</span>
             </td>
             <td>{interview.role || "-"}</td>
             {LastCommunicationHandle(interview?.last_comms)}
             <td>R{interview.salary}</td>
             <td>{interview.sent_by}</td>
-            <td>
+            <td className="archive-button">
               <a onClick={() => handleArchive(index)}>
-                {interview.archived ? "Archive" : "Unarchive"}
+                {interview.archived ? "Unarchive" : "Archive"}
               </a>
             </td>
           </tr>
@@ -81,20 +84,23 @@ function App() {
       });
     } else {
       return filteredCandidates.map((interview, index) => {
-        if (interview.archived === true) {
+        if (interview.archived === false) {
           return (
-            <tr key={index.toString()}>
-              <td>
+            <tr
+              key={index.toString()}
+              className={interview.archived ? "archived" : "unarchived"}
+            >
+              <td className="img-box">
                 <img src={interview.image} height={28} width={28} />
-                {interview.candidate}
+                <span>{interview.candidate}</span>
               </td>
               <td>{interview.role || "-"}</td>
               {LastCommunicationHandle(interview?.last_comms)}
               <td>R{interview.salary}</td>
               <td>{interview.sent_by}</td>
-              <td>
+              <td className="archive-button">
                 <a onClick={() => handleArchive(index)}>
-                  {interview.archived ? "Archive" : "Unarchive"}
+                  {interview.archived ? "Unarchive" : "Archive"}
                 </a>
               </td>
             </tr>
@@ -107,17 +113,17 @@ function App() {
   const LastCommunicationHandle = (comms, index) => {
     return (
       <td key={index}>
-        {comms.unread ? "🟢" : null} {comms.description}{" "}
-        {comms.date_time.toLocaleString()}
+        {comms.unread ? <span className="Active-Marker">🟢</span> : null}{" "}
+        {comms.description} {comms.date_time.toLocaleString()}
       </td>
     );
   };
 
   const Checkbox = ({ label, value, onChange }) => {
     return (
-      <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
+      <label className="archive-checkbox">
         {label}
+        <input type="checkbox" checked={value} onChange={onChange} />
       </label>
     );
   };
@@ -125,20 +131,28 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className="max-width-container">
+          <img className="app-logo" src={logo} />
+        </div>
+      </header>
+      <nav>
         <input
           type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           placeholder="Search..."
+          className="search-box"
         />
-        <aside className="aside-pull">
-          {interViewData.length} interview requests
-        </aside>
         <Checkbox
-          label="Show Archived"
+          label="Show archived"
           value={showArchived}
           onChange={handleShowArchivedChange}
         />
+      </nav>
+      <main>
+        <aside className="aside-pull">
+          {interViewData.length} interview requests
+        </aside>
         <table>
           <thead>
             <tr>
@@ -155,7 +169,7 @@ function App() {
           </thead>
           <tbody>{filteredTableRowRender()}</tbody>
         </table>
-      </header>
+      </main>
     </div>
   );
 }
