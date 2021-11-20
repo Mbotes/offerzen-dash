@@ -4,7 +4,7 @@ import jsonData from "../interviewRequests.json";
 import "./App.css";
 
 function App() {
-  const [showArchived, setShowArchived] = useState(true);
+  const [showArchived, setShowArchived] = useState(false);
   const [interViewData, setInterviewData] = useState([...jsonData]);
   const [searchText, setSearchText] = useState("");
   const [filteredCandidates, setFilteredCandidates] = useState([...jsonData]);
@@ -59,8 +59,8 @@ function App() {
   }, [searchText]);
 
   const filteredTableRowRender = () => {
-    return filteredCandidates.map((interview, index) => {
-      if (interview.archived === !showArchived) {
+    if (showArchived) {
+      return filteredCandidates.map((interview, index) => {
         return (
           <tr key={index.toString()}>
             <td>
@@ -78,8 +78,30 @@ function App() {
             </td>
           </tr>
         );
-      }
-    });
+      });
+    } else {
+      return filteredCandidates.map((interview, index) => {
+        if(interview.archived === true){
+          return (
+            <tr key={index.toString()}>
+              <td>
+                <img src={interview.image} height={28} width={28} />
+                {interview.candidate}
+              </td>
+              <td>{interview.role || "-"}</td>
+              {LastCommunicationHandle(interview?.last_comms)}
+              <td>R{interview.salary}</td>
+              <td>{interview.sent_by}</td>
+              <td>
+                <a onClick={() => handleArchive(index)}>
+                  {interview.archived ? "Archive" : "Unarchive"}
+                </a>
+              </td>
+            </tr>
+          );
+        }
+      });
+    }
   };
 
   const LastCommunicationHandle = (comms, index) => {
@@ -124,8 +146,8 @@ function App() {
               <th>Role</th>
               <th>
                 Last Communication{" "}
-                <button onClick={handleCommunicationSortAsc}>Asc</button>
-                <button onClick={handleCommunicationSortDesc}>Desc</button>
+                <a onClick={handleCommunicationSortAsc}>↑</a>
+                <a onClick={handleCommunicationSortDesc}>↓</a>
               </th>
               <th>Salary</th>
               <th>Sent by</th>
