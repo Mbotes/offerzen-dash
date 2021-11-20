@@ -6,8 +6,7 @@ The aim of this assignment is to evaluate the basic technical competence you’l
 position.
 
 - For the frontend implementation you need to use React or an equivalent library.
-- Feel free to make use of your preferred styling approach (regular CSS, CSS-in-JS, Sass
-  etc.), but do ensure that you make use of custom styles.
+- Feel free to make use of your preferred styling approach (regular CSS, CSS-in-JS, Sass etc.), but do ensure that you make use of custom styles.
 - There’s no need to create a fake backend for the data, you can just copy-paste the JSON
   data and import it directly.
 - Your work must be your own, and should be completed unassisted. Feel free, though, to
@@ -41,17 +40,17 @@ I created this app using a Vite starter template and tried to stay away from usi
 ### Known Issues
 
 - There is an issue when you are filtering the list with the search functionality and attempt to Archive/Unarchive a chat that it resets the state of the list and clears out the filtering.
-- Archiving can sometimes behave weirdly in general with the lack of ID's on the Json Data and having to rely on using an index to find and manipulate the data.
+- Archiving can sometimes behave weirdly in general with the lack of ID's on the JSON Data and having to rely on using an index to find and manipulate the data.
 - Did not manage to sort out the date formatting depending on how long ago the message was last sent, I started running out of time and didn't want to reach for a date library to help manage things like "within 24 hours, yesterday and beyond".
-- I did not include the correct Font/Typography, when I spent a small amount of time to find it, the first few results came back as a paid for Font, so I opted to skip it and priotise functionality.
-- The styling is not an issue per say but definitely could use a lot more love.
+- I did not include the correct Font/Typography, when I spent a small amount of time to find it, the first few results came back as a paid-for Font, so I opted to skip it and prioritize functionality.
+- The styling is not an issue per se but definitely could use a lot more love.
 
 ## Task D - Questions
 
 ### How long did this assignment take you and where did you spend your time?
 
-Realistically I think this task took me roughly 6 hours, I originally planned to just get the core functionality of the tasks working and leaving it at that, but decided to stretch my CSS muscles and try and adapt the screen to the design.
-This defintiely made me realise how rusty I was with CSS and how long it took me to do pretty basic things.
+Realistically I think this task took me roughly 6 hours, I originally planned to just get the core functionality of the tasks working and leave it at that, but decided to stretch my CSS muscles and try and adapt the screen to the design.
+This definitely made me realize how rusty I was with CSS and how long it took me to do pretty basic things.
 
 ### What would you do differently or improve in your solution?
 
@@ -61,4 +60,4 @@ This defintiely made me realise how rusty I was with CSS and how long it took me
 ### Do you have any feedback on this assignment? For example: What did you enjoy? What could be better? Which aspects were unclear?
 
 - I think this was a fantastic assignment, it looked so simple on the surface level but had these interesting curve balls the closer you looked at the assignment and requirements.
-- The only thing that I was unsure of is when you sort the table ASC/DESC on communication, should the unread rows be kept as the latest and the rest of the data is sorted accordingly.
+- The only thing that I was unsure of is when you sort the table ASC/DESC on communication, should the unread rows be kept as the latest and the rest of the data be sorted accordingly.
